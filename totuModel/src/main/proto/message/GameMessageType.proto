@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package space.junodev.model.message;
+
+enum GameMessageType {
+  ERROR = 0;
+  LOG = 1;
+
+  CREATE_GAME = 2;
+  GAME_CREATED = 3;
+
+  GAME_UPDATED = 4;
+  GAME_EVENT = 5;
+}

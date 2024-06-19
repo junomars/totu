@@ -1,0 +1,15 @@
+syntax = "proto3";
+import "message/GameMessageType.proto";
+import "message/LogPayload.proto";
+import "message/CreateGameRequest.proto";
+
+package space.junodev.model.message;
+
+message GameMessage {
+  GameMessageType gameMessageType = 1;
+  oneof gameMessagePayload {
+    LogPayload logPayload = 2;
+
+    CreateGameRequest createGameRequest = 3;
+  }
+}

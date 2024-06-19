@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "game/Site.proto";
+import "game/Route.proto";
+
+package space.junodev.model.game;
+
+message Board {
+  repeated Site sites = 1;
+  repeated Route routes = 2;
+}

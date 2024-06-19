@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "game/PlayCard.proto";
+
+package space.junodev.model.game;
+
+message ActionData {
+  oneof data {
+    PlayCard playCard = 1;
+  }
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+import "game/GameOrientation.proto";
+
+package space.junodev.model.message;
+
+message CreateGameRequest {
+  string                                    playerName = 1;
+  string                                    map = 2;
+  int32                                     playerCount = 3;
+  space.junodev.model.game.GameOrientation  gameOrientation = 4;
+}

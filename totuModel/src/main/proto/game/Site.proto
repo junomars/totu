@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "game/TroopSpace.proto";
+
+package space.junodev.model.game;
+
+message Site {
+  string name = 1;
+  int32 value = 2;
+  repeated TroopSpace spaces = 3;
+  bool hasMarker = 4;
+  bool isStartingNode = 5;
+  string alignment = 6;
+}

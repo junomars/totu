@@ -1,0 +1,17 @@
+syntax = "proto3";
+import "game/Card.proto";
+
+package space.junodev.model.game;
+
+message Player {
+  string id = 1;
+  string name = 2;
+  int32 power = 3;
+  int32 influence = 4;
+  repeated Card deck = 5;
+  repeated Card hand = 6;
+  repeated Card play = 7;
+  repeated Card discard = 8;
+  repeated Card innerCircle = 9;
+  int32 tokens = 10;
+}

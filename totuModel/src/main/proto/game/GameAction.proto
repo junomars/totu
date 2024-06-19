@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "game/ActionType.proto";
+import "game/ActionData.proto";
+
+package space.junodev.model.game;
+
+message GameAction {
+  ActionType type = 1;
+  ActionData data = 2;
+}

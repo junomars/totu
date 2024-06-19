@@ -1,0 +1,9 @@
+syntax = "proto3";
+import "game/GameAction.proto";
+
+package space.junodev.model.game;
+
+message GameEvent {
+  string playerId = 1;
+  GameAction gameAction = 2;
+}

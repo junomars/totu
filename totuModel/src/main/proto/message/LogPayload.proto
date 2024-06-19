@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package space.junodev.model.message;
+
+message LogPayload {
+  string message = 1;
+}

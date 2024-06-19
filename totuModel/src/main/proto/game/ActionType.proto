@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package space.junodev.model.game;
+
+enum ActionType {
+  JOINED_GAME = 0;
+  LEFT_GAME = 1;
+  STARTED_GAME = 2;
+  PLAY_CARD = 3;
+}

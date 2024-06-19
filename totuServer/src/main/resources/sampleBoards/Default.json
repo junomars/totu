@@ -1,0 +1,887 @@
+{
+  "sites": [
+    {
+      "name": "Gauntlgrym",
+      "value": 2,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": true,
+      "isStartingNode": false,
+      "alignment": "left"
+    },
+    {
+      "name": "The Wormwrithings",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "left"
+    },
+    {
+      "name": "Blingdenstone",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Menzoberranzan",
+      "value": 5,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": true,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Everfire",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Chaulssin",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": true,
+      "alignment": "right"
+    },
+    {
+      "name": "The Phaerlin",
+      "value": 2,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": true,
+      "isStartingNode": false,
+      "alignment": "right"
+    },
+    {
+      "name": "Yathchol",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "right"
+    },
+    {
+      "name": "Halls of the Scoured Legion",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Chasmleap Bridge",
+      "value": 1,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Gracklstugh",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Mantol-Derith",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": true,
+      "alignment": "center"
+    },
+    {
+      "name": "Jhachalkhyn",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": true,
+      "alignment": "left"
+    },
+    {
+      "name": "Buiyrandyn",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "left"
+    },
+    {
+      "name": "The Labyrinth",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Araumycos",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ],
+      "hasMarker": true,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Ched Nasad",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": true,
+      "alignment": "center"
+    },
+    {
+      "name": "Ruins of Dekanter",
+      "value": 5,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "right"
+    },
+    {
+      "name": "Llacerellyn",
+      "value": 2,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Eryndlyn",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": true,
+      "alignment": "center"
+    },
+    {
+      "name": "Skullport",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": true,
+      "alignment": "center"
+    },
+    {
+      "name": "Stoneshaft Clanhold",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "left"
+    },
+    {
+      "name": "Ch'chitl",
+      "value": 2,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": true,
+      "isStartingNode": false,
+      "alignment": "left"
+    },
+    {
+      "name": "Kanaglym",
+      "value": 3,
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": false,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Tsenviilyq",
+      "value": 4,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ],
+      "hasMarker": true,
+      "isStartingNode": false,
+      "alignment": "center"
+    },
+    {
+      "name": "Ss'zuraass'nee",
+      "value": 2,
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ],
+      "hasMarker": true,
+      "isStartingNode": false,
+      "alignment": "right"
+    }
+  ],
+  "routes": [
+    {
+      "source": "Gauntlgrym",
+      "target": "The Wormwrithings",
+      "spaces": []
+    },
+    {
+      "source": "Gauntlgrym",
+      "target": "Jhachalkhyn",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "The Wormwrithings",
+      "target": "Mantol-Derith",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Mantol-Derith",
+      "target": "Blingdenstone",
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ]
+    },
+    {
+      "source": "Mantol-Derith",
+      "target": "Menzoberranzan",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Mantol-Derith",
+      "target": "Gracklstugh",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Jhachalkhyn",
+      "target": "Gracklstugh",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Jhachalkhyn",
+      "target": "Buiyrandyn",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Buiyrandyn",
+      "target": "The Labyrinth",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Buiyrandyn",
+      "target": "Stoneshaft Clanhold",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Gracklstugh",
+      "target": "Chasmleap Bridge",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Chasmleap Bridge",
+      "target": "Menzoberranzan",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Chasmleap Bridge",
+      "target": "Everfire",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Menzoberranzan",
+      "target": "Everfire",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Everfire",
+      "target": "Halls of the Scoured Legion",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Everfire",
+      "target": "Chaulssin",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Chaulssin",
+      "target": "The Phaerlin",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "The Phaerlin",
+      "target": "Yathchol",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Yathchol",
+      "target": "Halls of the Scoured Legion",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Yathchol",
+      "target": "Ched Nasad",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Ched Nasad",
+      "target": "Halls of the Scoured Legion",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Ched Nasad",
+      "target": "Araumycos",
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ]
+    },
+    {
+      "source": "Araumycos",
+      "target": "Chasmleap Bridge",
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ]
+    },
+    {
+      "source": "Gracklstugh",
+      "target": "The Labyrinth",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "The Labyrinth",
+      "target": "Skullport",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Skullport",
+      "target": "Kanaglym",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Kanaglym",
+      "target": "Ch'chitl",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Kanaglym",
+      "target": "Eryndlyn",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Ch'chitl",
+      "target": "Stoneshaft Clanhold",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Stoneshaft Clanhold",
+      "target": "Skullport",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Araumycos",
+      "target": "Eryndlyn",
+      "spaces": [
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ]
+    },
+    {
+      "source": "Araumycos",
+      "target": "The Labyrinth",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NEUTRAL"
+        }
+      ]
+    },
+    {
+      "source": "Eryndlyn",
+      "target": "Llacerellyn",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Tsenviilyq",
+      "target": "Kanaglym",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Tsenviilyq",
+      "target": "Llacerellyn",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Ss'zuraass'nee",
+      "target": "Llacerellyn",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Ss'zuraass'nee",
+      "target": "Ruins of Dekanter",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Ruins of Dekanter",
+      "target": "Ched Nasad",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    },
+    {
+      "source": "Ruins of Dekanter",
+      "target": "The Phaerlin",
+      "spaces": [
+        {
+          "deployedTroop": "NONE"
+        },
+        {
+          "deployedTroop": "NONE"
+        }
+      ]
+    }
+  ]
+}

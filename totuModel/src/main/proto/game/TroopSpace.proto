@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package space.junodev.model.game;
+
+message TroopSpace {
+  string deployedTroop = 1;
+}

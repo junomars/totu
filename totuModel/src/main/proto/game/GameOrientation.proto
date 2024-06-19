@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package space.junodev.model.game;
+
+enum GameOrientation {
+  CENTER = 0;
+  LEFT = 1;
+  RIGHT = 2;
+}

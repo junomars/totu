@@ -1,0 +1,7 @@
+syntax = "proto3";
+package space.junodev.model.message;
+
+message PlayerSession {
+  string gameId = 1;
+  string playerId = 2;
+}

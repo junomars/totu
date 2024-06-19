@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "game/TroopSpace.proto";
+
+package space.junodev.model.game;
+
+message Route {
+  string source = 1;
+  string target = 2;
+  repeated TroopSpace spaces = 3;
+}

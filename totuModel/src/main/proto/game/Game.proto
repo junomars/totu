@@ -1,0 +1,17 @@
+syntax = "proto3";
+import "game/Board.proto";
+import "game/GameEvent.proto";
+import "game/GameStatus.proto";
+import "game/Player.proto";
+
+package space.junodev.model.game;
+
+message Game {
+  string id = 1;
+  GameStatus gameStatus = 2;
+  int32 currentPlayer = 3;
+  int32 winner = 4;
+  Board board = 5;
+  repeated Player players = 6;
+  repeated GameEvent events = 7;
+}

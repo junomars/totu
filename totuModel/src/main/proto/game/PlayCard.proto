@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package space.junodev.model.game;
+
+import "game/Player.proto";
+import "game/Card.proto";
+
+message PlayCard {
+  Player player = 1;
+  Card card = 2;
+}
