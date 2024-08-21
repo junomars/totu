@@ -34,7 +34,7 @@ protobuf {
             artifact = "io.grpc:protoc-gen-grpc-kotlin:1.3.0:jdk8@jar"
         }
         create("ts") {
-            path = "C:\\Users\\jonat\\IdeaProjects\\totu\\totuModel\\node_modules\\.bin\\protoc-gen-ts_proto.cmd"
+            path = "\\node_modules\\.bin\\protoc-gen-ts_proto.cmd"
         }
     }
     generateProtoTasks {
