@@ -1,5 +1,3 @@
-import com.google.protobuf.gradle.id
-
 plugins {
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.serialization") version "1.8.0"
@@ -13,28 +11,32 @@ repositories {
     mavenCentral()
 }
 
+val grpcVersion = "1.47.0"
+val protobufVersion = "3.21.7"
+val serializationVersion = "1.5.1"
+
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("io.grpc:grpc-kotlin-stub:1.3.0")
-    implementation("io.grpc:grpc-protobuf:1.47.0")
-    implementation("com.google.protobuf:protobuf-kotlin:3.21.7")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.5.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-protobuf:1.5.1")
+    implementation("io.grpc:grpc-protobuf:$grpcVersion")
+    implementation("com.google.protobuf:protobuf-kotlin:$protobufVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-protobuf:$serializationVersion")
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.7"
+        artifact = "com.google.protobuf:protoc:$protobufVersion"
     }
     plugins {
         create("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.47.0"
+            artifact = "io.grpc:protoc-gen-grpc-java:$grpcVersion"
         }
         create("grpckt") {
             artifact = "io.grpc:protoc-gen-grpc-kotlin:1.3.0:jdk8@jar"
         }
         create("ts") {
-            path = "node node_modules/.bin/protoc-gen-ts_proto"
+            path = "node_modules/.bin/protoc-gen-ts_proto"
         }
     }
     generateProtoTasks {
@@ -42,9 +44,7 @@ protobuf {
             task.plugins {
                 create("grpc")
                 create("grpckt")
-                create("ts") {
-                }
-                id("kotlin")
+                create("ts")
             }
         }
     }
@@ -67,11 +67,9 @@ tasks.compileKotlin {
 
 tasks.register("customCopyTask") {
     dependsOn("generateProto")
-    doFirst {
-        println("Creating directory...")
-        mkdir("../totuClient/src/generated")
-    }
+    outputs.dir("../totuClient/src/generated")
     doLast {
+        println("Creating directory...")
         copy {
             from(layout.buildDirectory.dir("generated/source/proto/main/ts"))
             into("../totuClient/src/generated")
@@ -82,6 +80,5 @@ tasks.register("customCopyTask") {
 }
 
 tasks.build {
-    dependsOn("compileKotlin")
-    dependsOn("customCopyTask")
+    dependsOn(tasks.compileKotlin, tasks.named("customCopyTask"))
 }
