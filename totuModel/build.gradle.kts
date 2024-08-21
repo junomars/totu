@@ -82,3 +82,7 @@ tasks.register("customCopyTask") {
 tasks.build {
     dependsOn(tasks.compileKotlin, tasks.named("customCopyTask"))
 }
+
+kotlin {
+    jvmToolchain(17)
+}
