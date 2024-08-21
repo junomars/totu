@@ -1,3 +1,5 @@
+import java.util.*
+
 plugins {
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.serialization") version "1.8.0"
@@ -36,7 +38,11 @@ protobuf {
             artifact = "io.grpc:protoc-gen-grpc-kotlin:1.3.0:jdk8@jar"
         }
         create("ts") {
-            path = "node_modules/.bin/protoc-gen-ts_proto"
+            path = if (System.getProperty("os.name").lowercase(Locale.getDefault()).contains("win")) {
+                "${projectDir}/node_modules/.bin/protoc-gen-ts_proto.cmd"
+            } else {
+                "${projectDir}/node_modules/.bin/protoc-gen-ts_proto"
+            }
         }
     }
     generateProtoTasks {
