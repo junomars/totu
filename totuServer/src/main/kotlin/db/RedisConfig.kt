@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono
 import java.util.*
 
 object RedisConfig {
-    private val client = RedisClient.create("redis://localhost:6379")
+    private val client = RedisClient.create("redis://3000--main--juno-sandbox--juno.coder.tartarus.cloud:6379")
     private val connection: StatefulRedisConnection<String, String> = client.connect()
     private val pubSubConnection: StatefulRedisPubSubConnection<String, String> = client.connectPubSub()
     val commands: RedisReactiveCommands<String, String> = connection.reactive()

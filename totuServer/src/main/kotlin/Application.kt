@@ -13,7 +13,16 @@ fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 fun Application.module() {
     install(CORS) {
-        allowHost("localhost:3000", schemes = listOf("http", "https"))
+        allowHost("3000--main--juno-sandbox--juno.coder.tartarus.cloud", schemes = listOf("https"))
+
+        // completed by server | blocked by browser if not same origin
+        allowMethod(HttpMethod.Get)
+
+        // preflight follows above | on success complete the request
+        allowMethod(HttpMethod.Post)
+        allowMethod(HttpMethod.Put)
+        allowMethod(HttpMethod.Delete)
+
         allowHeader(HttpHeaders.ContentType)
         allowHeader(HttpHeaders.Authorization)
         allowHeader(HttpHeaders.AccessControlAllowOrigin)

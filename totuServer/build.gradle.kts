@@ -28,7 +28,7 @@ configurations.all {
 }
 
 dependencies {
-    implementation("space.junodev:totuModel")
+    implementation(project(":totuModel"))
 
     // ktor
     implementation("io.ktor:ktor-server-cors")

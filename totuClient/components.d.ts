@@ -7,7 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    GameBoard: typeof import('./src/components/game/board/GameBoard.vue')['default']
+    GameView: typeof import('./src/components/game/GameView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Site: typeof import('./src/components/game/board/Site.vue')['default']
+    TroopSpace: typeof import('./src/components/game/board/TroopSpace.vue')['default']
   }
 }

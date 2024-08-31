@@ -10,7 +10,7 @@ export default class GameService {
   private socket: WebSocket | null = null;
 
   connectWebSocket(gameId: string) {
-    this.socket = new WebSocket(`ws://localhost:8080/game/${gameId}`);
+    this.socket = new WebSocket(`ws://3000--main--juno-sandbox--juno.coder.tartarus.cloud:8080/game/${gameId}`);
 
     this.socket.onopen = () => {
       console.log("WebSocket connection opened");
@@ -32,7 +32,7 @@ export default class GameService {
   }
 
   async createGame(createGameMessagePayload: CreateGamePayload) {
-    const response = await fetch("http://localhost:8080/game", {
+    const response = await fetch("https://3000--main--juno-sandbox--juno.coder.tartarus.cloud:8080/game", {
       method: "POST", body: JSON.stringify({
         type: GameMessageType.CREATE_GAME,
         payload: createGameMessagePayload
@@ -58,7 +58,7 @@ export default class GameService {
 
   async fetchCurrentGames(): Promise<Game[]> {
     try {
-      const response = await axios.get<Game[]>("http://localhost:8080/games");
+      const response = await axios.get<Game[]>("https://3000--main--juno-sandbox--juno.coder.tartarus.cloud:8080/games");
       // Fetched games
       return response.data;
     } catch (error) {

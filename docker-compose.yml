@@ -1,0 +1,26 @@
+# NOTE: If you're selfhosting, you'll find it much easier (and more performant) to use the proper selfhosted
+# dockerfile that exists here: https://github.com/julianpoy/recipesage-selfhost
+
+services:
+  proxy:
+    image: nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    command: nginx -g 'daemon off;'
+    depends_on:
+      - frontend
+      - backend
+  frontend:
+    build:
+      context: .
+      dockerfile: ./totuClient/Dockerfile
+    ports:
+      - "3000:3000"
+  backend:
+    build:
+      context: .
+      dockerfile: ./totuServer/Dockerfile
+    ports:
+      - "8080:8080"
