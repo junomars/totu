@@ -25,13 +25,17 @@ RUN chown -R gradle:gradle $APP_HOME
 # Switch to gradle user to build
 USER gradle
 
+# Build dependencies
+RUN cd totuModel && npm install
+RUN cd ..
+
 # Build the project
 RUN ./gradlew clean build --no-daemon
 
 # Stage 2: Create the final runtime image
 FROM openjdk:17-jdk-slim
 
-ENV ARTIFACT_NAME=totuServer/build/libs/totuServer-all.jar
+ENV ARTIFACT_NAME=totuServer/build/libs/totuServer-0.0.1.jar
 ENV APP_HOME=/usr/app/
 
 WORKDIR $APP_HOME
