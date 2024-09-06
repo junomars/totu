@@ -1,18 +1,12 @@
 package space.junodev.db
 
+import io.ktor.server.config.*
 import io.lettuce.core.RedisClient
 import io.lettuce.core.api.StatefulRedisConnection
-import io.lettuce.core.api.async.RedisAsyncCommands
 import io.lettuce.core.api.reactive.RedisReactiveCommands
-import io.lettuce.core.api.sync.RedisCommands
 import io.lettuce.core.pubsub.StatefulRedisPubSubConnection
-import io.lettuce.core.pubsub.api.async.RedisPubSubAsyncCommands
 import io.lettuce.core.pubsub.api.reactive.RedisPubSubReactiveCommands
-import io.lettuce.core.pubsub.api.sync.RedisPubSubCommands
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import reactor.core.publisher.Mono
-import java.util.*
 
 class RedisConfig(val host: String, val port: Int) {
     private val client = RedisClient.create("redis://${host}:${port}")

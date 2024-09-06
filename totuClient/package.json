@@ -1,8 +1,8 @@
 {
-  "name": "totuClient",
+  "name": "Tyrants of the Underdark",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path ../.gitignore"

@@ -40,7 +40,6 @@ dependencies {
     implementation("io.ktor:ktor-server-freemarker")
     implementation("io.ktor:ktor-server-websockets-jvm")
     implementation("io.ktor:ktor-server-host-common-jvm")
-    implementation("io.ktor:ktor-server-config-yaml")
 
     // serde
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.5.1")
@@ -66,7 +65,7 @@ dependencies {
 
     // db
     implementation("org.postgresql:postgresql:42.2.20")
-    implementation("io.lettuce:lettuce-core:6.3.2.RELEASE")
+    implementation("io.lettuce:lettuce-core:6.4.0.RELEASE")
 
     // testing
     testImplementation(kotlin("test"))

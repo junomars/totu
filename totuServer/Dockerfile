@@ -35,7 +35,7 @@ RUN ./gradlew clean build --no-daemon
 # Stage 2: Create the final runtime image
 FROM openjdk:17-jdk-slim
 
-ENV ARTIFACT_NAME=totuServer/build/libs/totuServer-0.0.1.jar
+ENV ARTIFACT_NAME=totuServer/build/libs/totuServer-all.jar
 ENV APP_HOME=/usr/app/
 
 WORKDIR $APP_HOME
@@ -47,4 +47,4 @@ COPY --from=temp_build_image /usr/app/$ARTIFACT_NAME .
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "totuServer-0.0.1.jar"]
+ENTRYPOINT ["java", "-jar", "totuServer-all.jar", "-port", "8080"]

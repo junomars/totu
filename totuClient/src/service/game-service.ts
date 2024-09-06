@@ -51,6 +51,15 @@ export default class GameService {
 
       const playerSession: PlayerSession = await response.json();
       sessionStorage.setItem("playerSession", JSON.stringify(playerSession));
+    const response = await fetch(`https://${ENVIRONMENT.baseUrl}/game`, {
+      method: "POST", body: JSON.stringify({
+        type: GameMessageType.CREATE_GAME,
+        payload: createGameMessagePayload
+      })
+    });
+    const playerSession: PlayerSession = await response.json();
+
+    sessionStorage.setItem("playerSession", JSON.stringify(playerSession));
 
       // Connect to the websocket
       this.connectWebSocket(playerSession.gameId);

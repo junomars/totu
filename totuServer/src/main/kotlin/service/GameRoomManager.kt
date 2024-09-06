@@ -17,7 +17,7 @@ import java.util.*
 class GameRoomManager(val redisHost: String, val redisPort: Int) {
     private val gameRooms = mutableMapOf<UUID, Game>()
     private val webSocketSessions = mutableMapOf<UUID, MutableList<DefaultWebSocketSession>>()
-    private val redisConfig = RedisConfig(redisHost, redisPort)
+//    private val redisConfig = RedisConfig(redisHost, redisPort)
 
     fun createGame(boardConfiguration: BoardConfiguration): Mono<Game> {
         return Mono.fromCallable {
@@ -35,44 +35,17 @@ class GameRoomManager(val redisHost: String, val redisPort: Int) {
             }
             gameRooms[game.id.value] = game
             game
-        }.publishOn(Schedulers.boundedElastic())
-            .flatMap { game ->
-                saveGameToRedis(game).thenReturn(game)
-            }.doOnSuccess { game ->
-                subscribeToGameRoom(game.id.value)
-            }
+        }
+//            .publishOn(Schedulers.boundedElastic())
+//            .flatMap { game ->
+//                saveGameToRedis(game).thenReturn(game)
+//            }.doOnSuccess { game ->
+//                subscribeToGameRoom(game.id.value)
+//            }
     }
 
     fun getGameRoom(gameId: UUID): Game {
         return gameRooms[gameId] ?: throw GameNotFoundException("Game $gameId not found!")
-    }
-
-
-    fun saveGameToRedis(game: Game): Mono<Void> {
-        return redisConfig.withCommands { commands ->
-            commands.set("game:${game.id}", Json.encodeToString(game)).then()
-        }
-    }
-
-    private fun loadGameFromRedis(gameId: UUID): Mono<Game> {
-        return redisConfig.withCommands { commands ->
-            commands.get("game:$gameId")
-        }.flatMap { gameJson ->
-            Mono.justOrEmpty(Json.decodeFromString<Game>(gameJson))
-        }
-    }
-
-
-    private fun subscribeToGameRoom(gameId: UUID) {
-        redisConfig.pubSubCommands.subscribe("game:$gameId")
-            .flatMapMany { _ ->
-                redisConfig.pubSubCommands.observeChannels()
-                    .filter { it.channel == "game:$gameId" }
-                    .map { message -> Json.decodeFromString<Game>(message.message) }
-            }
-            .subscribe { game ->
-                gameRooms[gameId] = game
-            }
     }
 
     fun registerSession(gameId: UUID, session: DefaultWebSocketSession) {
