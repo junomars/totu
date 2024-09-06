@@ -15,14 +15,14 @@ import space.junodev.model.message.PlayerSessionOuterClass.PlayerSession
 import space.junodev.service.GameRoomManager
 import java.util.*
 
-fun Route.gameRouting() {
+fun Route.gameRouting(gameRoomManager: GameRoomManager) {
     webSocket("/game/{gameId?}") {
         val messageHandlerFactory = MessageHandlerFactory()
         val playerSession = call.sessions.get<PlayerSession>() ?: throw SessionNotFoundException("No session found.")
 
         var game: Game? = null
         try {
-            game = GameRoomManager.getGameRoom(UUID.fromString(playerSession.gameId))
+            game = gameRoomManager.getGameRoom(UUID.fromString(playerSession.gameId))
         } catch (e: GameNotFoundException) {
             close(CloseReason(CloseReason.Codes.CANNOT_ACCEPT, "Game not found"))
         }

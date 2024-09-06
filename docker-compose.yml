@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: ./totuClient/Dockerfile
     ports:
-      - "3000:3000"
+      - "5173:5173"
   backend:
     build:
       context: .

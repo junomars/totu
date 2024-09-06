@@ -14,8 +14,8 @@ import kotlinx.coroutines.withContext
 import reactor.core.publisher.Mono
 import java.util.*
 
-object RedisConfig {
-    private val client = RedisClient.create("redis://3000--main--juno-sandbox--juno.coder.tartarus.cloud:6379")
+class RedisConfig(val host: String, val port: Int) {
+    private val client = RedisClient.create("redis://${host}:${port}")
     private val connection: StatefulRedisConnection<String, String> = client.connect()
     private val pubSubConnection: StatefulRedisPubSubConnection<String, String> = client.connectPubSub()
     val commands: RedisReactiveCommands<String, String> = connection.reactive()

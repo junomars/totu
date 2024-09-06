@@ -11,7 +11,7 @@ import space.junodev.db.table.BoardConfigurations
 
 fun Route.boardConfigurationRouting() {
     val log = LoggerFactory.getLogger(this.javaClass)
-    route("/boards") {
+    route("/api/getAllBoards") {
         get {
             log.info("Get all boards")
             try {

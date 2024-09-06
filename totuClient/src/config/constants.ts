@@ -25,3 +25,7 @@ export const GRAPH_CONFIG = {
   }
 
 }
+
+export const ENVIRONMENT = {
+  host: '80--main--juno-sandbox--juno.coder.tartarus.cloud'
+}

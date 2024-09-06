@@ -21,8 +21,8 @@ import space.junodev.model.message.GameMessageOuterClass.GameMessage
 import space.junodev.model.message.PlayerSessionOuterClass.PlayerSession
 import space.junodev.service.GameRoomManager
 
-fun Route.gameCreationRouting() {
-    route("/games") {
+fun Route.gameCreationRouting(gameRoomManager: GameRoomManager) {
+    route("/api/getGames") {
         get {
             try {
                 val games = transaction {
@@ -34,7 +34,7 @@ fun Route.gameCreationRouting() {
             }
         }
     }
-    route("/game") {
+    route("/api/createGame") {
         post {
             val gameMessageRequest: GameMessage = call.receive<GameMessage>()
             var game: Game? = null
@@ -48,7 +48,7 @@ fun Route.gameCreationRouting() {
                 }.singleOrNull() ?: throw BoardConfigurationNotFound("Board configuration not found")
 
                 logger.info("Creating game with board configuration ${boardConfiguration.id.value}")
-                game = GameRoomManager.createGame(boardConfiguration).block()
+                game = gameRoomManager.createGame(boardConfiguration).block()
                 logger.info("Created game with id ${game?.id?.value}")
 
                 logger.info("Creating player with game ${game?.id?.value}")

@@ -9,9 +9,14 @@ import kotlinx.serialization.json.Json
 import space.junodev.routes.boardConfigurationRouting
 import space.junodev.routes.gameCreationRouting
 import space.junodev.routes.gameRouting
+import space.junodev.service.GameRoomManager
 import java.time.Duration
 
 fun Application.configureRouting() {
+    val redisHost = environment.config.property("redis.host").getString()
+    val redisPort = environment.config.property("redis.port").getString().toInt()
+    val gameRoomManager = GameRoomManager(redisHost, redisPort)
+
     routing {
         this@configureRouting.install(WebSockets) {
             contentConverter = KotlinxWebsocketSerializationConverter(Json)
@@ -27,7 +32,7 @@ fun Application.configureRouting() {
             }
         }
         boardConfigurationRouting()
-        gameCreationRouting()
-        gameRouting()
+        gameCreationRouting(gameRoomManager)
+        gameRouting(gameRoomManager)
     }
 }

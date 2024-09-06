@@ -5,12 +5,13 @@ import {CreateGamePayload} from "@/generated/message/payloads/CreateGamePayload"
 import {GameCreatedPayload} from "@/generated/message/payloads/GameCreatedPayload";
 import {Game} from "@/generated/game/Game";
 import {PlayerSession} from "@/generated/PlayerSession";
+import {ENVIRONMENT} from "@/config/constants";
 
 export default class GameService {
   private socket: WebSocket | null = null;
 
   connectWebSocket(gameId: string) {
-    this.socket = new WebSocket(`ws://3000--main--juno-sandbox--juno.coder.tartarus.cloud:8080/game/${gameId}`);
+    this.socket = new WebSocket(`ws://${ENVIRONMENT.host}/game/${gameId}`);
 
     this.socket.onopen = () => {
       console.log("WebSocket connection opened");
@@ -32,33 +33,45 @@ export default class GameService {
   }
 
   async createGame(createGameMessagePayload: CreateGamePayload) {
-    const response = await fetch("https://3000--main--juno-sandbox--juno.coder.tartarus.cloud:8080/game", {
-      method: "POST", body: JSON.stringify({
-        type: GameMessageType.CREATE_GAME,
-        payload: createGameMessagePayload
-      })
-    });
-    const playerSession: PlayerSession = await response.json();
+    try {
+      const response = await fetch(`https://${ENVIRONMENT.host}/game`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          type: GameMessageType.CREATE_GAME,
+          payload: createGameMessagePayload
+        })
+      });
 
-    sessionStorage.setItem("playerSession", JSON.stringify(playerSession));
+      if (!response.ok) {
+        throw new Error(`Server responded with status ${response.status}`);
+      }
 
-    // Connect to the websocket
-    this.connectWebSocket(playerSession.gameId);
+      const playerSession: PlayerSession = await response.json();
+      sessionStorage.setItem("playerSession", JSON.stringify(playerSession));
 
-    if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-      const message = {
-        type: "JOIN_GAME",
-        payload: createGameMessagePayload,
-      };
-      this.socket.send(JSON.stringify(message));
-    } else {
-      console.error("WebSocket connection is not open");
+      // Connect to the websocket
+      this.connectWebSocket(playerSession.gameId);
+
+      if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+        const message = {
+          type: "JOIN_GAME",
+          payload: createGameMessagePayload,
+        };
+        this.socket.send(JSON.stringify(message));
+      } else {
+        console.error("WebSocket connection is not open");
+      }
+    } catch (error) {
+      console.error("Error creating game:", error);
     }
   }
 
   async fetchCurrentGames(): Promise<Game[]> {
     try {
-      const response = await axios.get<Game[]>("https://3000--main--juno-sandbox--juno.coder.tartarus.cloud:8080/games");
+      const response = await axios.get<Game[]>(`https://${ENVIRONMENT.host}/games`);
       // Fetched games
       return response.data;
     } catch (error) {

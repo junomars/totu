@@ -14,9 +14,10 @@ import space.junodev.model.game.GameStatusOuterClass.GameStatus
 import java.time.LocalDateTime
 import java.util.*
 
-object GameRoomManager {
+class GameRoomManager(val redisHost: String, val redisPort: Int) {
     private val gameRooms = mutableMapOf<UUID, Game>()
     private val webSocketSessions = mutableMapOf<UUID, MutableList<DefaultWebSocketSession>>()
+    private val redisConfig = RedisConfig(redisHost, redisPort)
 
     fun createGame(boardConfiguration: BoardConfiguration): Mono<Game> {
         return Mono.fromCallable {
@@ -48,13 +49,13 @@ object GameRoomManager {
 
 
     fun saveGameToRedis(game: Game): Mono<Void> {
-        return RedisConfig.withCommands { commands ->
+        return redisConfig.withCommands { commands ->
             commands.set("game:${game.id}", Json.encodeToString(game)).then()
         }
     }
 
     private fun loadGameFromRedis(gameId: UUID): Mono<Game> {
-        return RedisConfig.withCommands { commands ->
+        return redisConfig.withCommands { commands ->
             commands.get("game:$gameId")
         }.flatMap { gameJson ->
             Mono.justOrEmpty(Json.decodeFromString<Game>(gameJson))
@@ -63,9 +64,9 @@ object GameRoomManager {
 
 
     private fun subscribeToGameRoom(gameId: UUID) {
-        RedisConfig.pubSubCommands.subscribe("game:$gameId")
+        redisConfig.pubSubCommands.subscribe("game:$gameId")
             .flatMapMany { _ ->
-                RedisConfig.pubSubCommands.observeChannels()
+                redisConfig.pubSubCommands.observeChannels()
                     .filter { it.channel == "game:$gameId" }
                     .map { message -> Json.decodeFromString<Game>(message.message) }
             }
