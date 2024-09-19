@@ -1,0 +1,22 @@
+name: tyrants
+jobs:
+  BuildModel:
+    name: Build Model
+    steps:
+      - type: script
+        script-content: npm install -D ts-proto
+        working-directory: ./totuModel
+      - type: gradle
+        working-directory: ./totuModel
+        use-gradle-wrapper: ''
+        tasks: build
+      - type: gradle
+        working-directory: ./totuServer
+        tasks: build
+      - type: node-js
+        working-directory: ./totuClient
+        shell-script: npm run build
+        docker-image: node:lts
+    runs-on: Linux-Small
+    parallelism: 4
+    enable-dependency-cache: true
