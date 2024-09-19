@@ -19,17 +19,11 @@ COPY totuServer/ $APP_HOME/totuServer/
 # Ensure the Gradle wrapper is executable
 RUN chmod +x gradlew
 
-# Fix permissions on the working directory
-RUN chown -R gradle:gradle $APP_HOME
-
-# Switch to gradle user to build
-USER gradle
-
 # Build dependencies
 RUN cd totuModel && npm install
 RUN cd ..
 
-# Build the project
+# Build the project using the wrapper
 RUN ./gradlew clean build --no-daemon
 
 # Stage 2: Create the final runtime image
@@ -41,7 +35,7 @@ ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
 
 # Copy the built JAR from the build stage
-COPY --from=temp_build_image /usr/app/$ARTIFACT_NAME .
+COPY --from=temp_build_image /usr/app/$ARTIFACT_NAME ./
 
 # Expose the application port
 EXPOSE 8080

@@ -1,7 +1,7 @@
 import java.util.*
 
 plugins {
-    kotlin("jvm") version "1.9.22"
+    kotlin("jvm")
     kotlin("plugin.serialization") version "1.8.0"
     id("com.google.protobuf") version "0.9.4"
 }
@@ -13,13 +13,14 @@ repositories {
     mavenCentral()
 }
 
-val grpcVersion = "1.47.0"
-val protobufVersion = "3.21.7"
-val serializationVersion = "1.5.1"
+val grpcVersion = "1.66.0"
+val grpcKotlinStubVersion = "1.4.1"
+val protobufVersion = "4.28.1"
+val serializationVersion = "1.7.2"
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("io.grpc:grpc-kotlin-stub:1.3.0")
+    implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinStubVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
     implementation("com.google.protobuf:protobuf-kotlin:$protobufVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
@@ -87,12 +88,4 @@ tasks.register("customCopyTask") {
 
 tasks.build {
     dependsOn(tasks.compileKotlin, tasks.named("customCopyTask"))
-}
-
-kotlin {
-    jvmToolchain(17)
-}
-tasks.withType<JavaCompile> {
-    sourceCompatibility = "17"
-    targetCompatibility = "17"
 }

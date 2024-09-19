@@ -1,4 +1,6 @@
 plugins {
+    kotlin("jvm") apply false
+    id("io.ktor.plugin") apply false
 }
 
 group = "space.junodev"
@@ -12,4 +14,6 @@ subprojects {
     repositories {
         mavenCentral()
     }
+
+    apply(plugin = "org.jetbrains.kotlin.jvm")
 }

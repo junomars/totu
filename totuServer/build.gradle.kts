@@ -1,7 +1,7 @@
 plugins {
     application
-    kotlin("jvm") version "1.9.22"
-    id("io.ktor.plugin") version "2.3.9"
+    kotlin("jvm")
+    id("io.ktor.plugin")
     kotlin("plugin.serialization") version "1.9.0"
 }
 
@@ -64,7 +64,7 @@ dependencies {
     implementation("com.h2database:h2:$h2Version")
 
     // db
-    implementation("org.postgresql:postgresql:42.2.20")
+    implementation("org.postgresql:postgresql:42.7.4")
     implementation("io.lettuce:lettuce-core:6.4.0.RELEASE")
 
     // testing
