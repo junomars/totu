@@ -43,10 +43,9 @@ jobs:
       - type: gradle
         working-directory: ''
         use-gradle-wrapper: 'true'
-        tasks: ':totuModel:publish'
+        tasks: ':totuModel:publish -Pgpr.user=%USERNAME% -Pgpr.token=%GITHUB_TOKEN%'
         jdk-home: '%env.JDK_21_0_x64%'
         name: Publish Gradle model package
-        gradle-params: gpr.user=%USERNAME% gpr.token=%GITHUB_TOKEN%
     enable-dependency-cache: true
     files-publication:
       - ./totuModel/build/libs/*.jar
