@@ -1,28 +1,55 @@
 name: tyrants
 jobs:
   BuildModel:
-    name: Build packages
+    name: Build model
     steps:
       - type: node-js
         working-directory: ./totuModel
         name: ''
         shell-script: |-
-          sudo apt-get install protobuf-compiler
           npm ci
+          npm install -D ts-proto
         docker-image: node:lts
       - type: gradle
-        working-directory: ./totuModel
-        use-gradle-wrapper: ''
-        tasks: build
-        jdk-home: '%env.JDK_21_0_x64%'
-      - type: gradle
-        working-directory: ./totuServer
-        tasks: build
+        working-directory: ''
+        use-gradle-wrapper: 'true'
+        tasks: ':totuModel:build'
         jdk-home: '%env.JDK_21_0_x64%'
       - type: node-js
-        working-directory: ./totuClient
-        shell-script: npm run build
+        working-directory: ./totuModel
+        shell-script: |-
+          apt-get update
+          apt-get install protobuf-compiler -y
+          npm run build
         docker-image: node:lts
+        name: Build npm package
     runs-on: Linux-Small
     parallelism: 5
     enable-dependency-cache: true
+    files-publication:
+      - ''
+  PublishModel:
+    name: Publish model
+    runs-on: Linux-Medium
+    dependencies:
+      - BuildModel:
+          files:
+            - ''
+    steps:
+      - type: script
+        working-directory: ./totuModel
+        name: Publish Gradle model package
+        script-content: |-
+          export gpr.user=%USERNAME%;
+          export gpr.token=%GITHUB_PUBLISH_PKG_TOKEN%
+          ./gradlew publish
+      - type: node-js
+        shell-script: npm run release --access=private
+        docker-image: node:lts
+        working-directory: ./totuModel
+        name: Publish NPM model package
+    enable-dependency-cache: true
+secrets:
+  GITHUB_TOKEN: credentialsJSON:ece132ad-c40d-4fd9-af78-c4e4b02e0042
+parameters:
+  USERNAME: junomars
