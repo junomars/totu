@@ -46,7 +46,8 @@ jobs:
         script-content: |-
           export USERNAME=%USERNAME%
           export GITHUB_TOKEN=%GITHUB_TOKEN%
-          ./gradlew :totuModel:publish -Pgpr.user=%USERNAME% -Pgpr.token=%GITHUB_TOKEN%
+          ./gradlew :totuModel:release
+          ./gradlew :totuModel:publish
     enable-dependency-cache: true
     files-publication:
       - ./totuModel/build/libs/*.jar
@@ -57,8 +58,12 @@ jobs:
     steps:
       - type: node-js
         shell-script: |-
+          export GITHUB_TOKEN=%GITHUB_TOKEN%
           cd totuModel
           npm ci
+          cd ..
+          export GIT_DIR=../.git
+          export GIT_WORK_TREE=..
           npm run release
         docker-image: node:lts
         working-directory: ''
@@ -73,6 +78,6 @@ jobs:
       - ./totuModel/*.tgz
       - ./totuModel/dist/**
 secrets:
-  GITHUB_TOKEN: credentialsJSON:ece132ad-c40d-4fd9-af78-c4e4b02e0042
+  GITHUB_TOKEN: credentialsJSON:74211c03-3550-4c65-9eb3-b262fd2f893d
 parameters:
   USERNAME: junomars
