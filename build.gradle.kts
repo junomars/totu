@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") apply false
-    id("io.ktor.plugin") apply false
+    kotlin("jvm") version "1.9.22" apply false
+    id("io.ktor.plugin") version "2.3.9" apply false
 }
 
 group = "space.junodev"
