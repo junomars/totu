@@ -1,5 +1,26 @@
 {
+  "name": "@junomars/totu-model",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npm run proto && tsc",
+    "proto": "mkdir -p src/generated && protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=src/generated --proto_path=./src/main/proto ./src/main/proto/**/*.proto",
+    "publish:package": "npm publish --access=private"
+  },
   "devDependencies": {
-    "ts-proto": "^2.0.2"
+    "ts-proto": "^2.0.2",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "src/generated"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/junomars/totu"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }

@@ -1,9 +1,10 @@
 import java.util.*
 
 plugins {
-    kotlin("jvm")
-    kotlin("plugin.serialization") version "1.8.0"
+    kotlin("jvm") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.22"
     id("com.google.protobuf") version "0.9.4"
+    `maven-publish`
 }
 
 group = "space.junodev"
@@ -38,20 +39,12 @@ protobuf {
         create("grpckt") {
             artifact = "io.grpc:protoc-gen-grpc-kotlin:1.3.0:jdk8@jar"
         }
-        create("ts") {
-            path = if (System.getProperty("os.name").lowercase(Locale.getDefault()).contains("win")) {
-                "${projectDir}/node_modules/.bin/protoc-gen-ts_proto.cmd"
-            } else {
-                "${projectDir}/node_modules/.bin/protoc-gen-ts_proto"
-            }
-        }
     }
     generateProtoTasks {
         all().forEach { task ->
             task.plugins {
                 create("grpc")
                 create("grpckt")
-                create("ts")
             }
         }
     }
@@ -72,20 +65,27 @@ tasks.compileKotlin {
     dependsOn("generateProto")
 }
 
-tasks.register("customCopyTask") {
-    dependsOn("generateProto")
-    outputs.dir("../totuClient/src/generated")
-    doLast {
-        println("Creating directory...")
-        copy {
-            from(layout.buildDirectory.dir("generated/source/proto/main/ts"))
-            into("../totuClient/src/generated")
-            include("**/**")
-        }
-        println("Copied generated TypeScript files to ../totuClient/src/generated")
-    }
+tasks.build {
+    dependsOn(tasks.compileKotlin)
 }
 
-tasks.build {
-    dependsOn(tasks.compileKotlin, tasks.named("customCopyTask"))
+publishing {
+    publications {
+        create<MavenPublication>("gpr") {
+            from(components["java"])
+            groupId = "space.junodev"
+            artifactId = "totu-model"
+            version = "0.1.0"
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/junomars/totu")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") as String? ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }

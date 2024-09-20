@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2017",                   // Set the target version of JavaScript
+    "module": "commonjs",                  // CommonJS modules
+    "declaration": true,                   // Generate .d.ts files
+    "outDir": "./dist",                    // Output directory
+    "rootDir": "./src",                    // Root directory of the source files
+    "strict": true,                        // Enable strict type-checking options
+    "esModuleInterop": true,               // Enables interoperation between CommonJS and ES Modules
+    "skipLibCheck": true,                  // Skip checking library declaration files
+    "forceConsistentCasingInFileNames": true // Force consistent casing in imports
+  },
+  "include": [
+    "src/**/*"                             // Include all TypeScript files in the src directory
+  ],
+  "exclude": [
+    "node_modules",                        // Exclude node_modules
+    "dist"                                 // Exclude the output directory
+  ]
+}
