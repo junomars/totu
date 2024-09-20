@@ -7,8 +7,8 @@ jobs:
         working-directory: ./totuModel
         name: ''
         shell-script: |-
+          sudo apt-get install protobuf-compiler
           npm ci
-          npm install -D ts-proto
         docker-image: node:lts
       - type: gradle
         working-directory: ./totuModel
