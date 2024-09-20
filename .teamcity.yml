@@ -5,7 +5,7 @@ jobs:
     steps:
       - type: node-js
         working-directory: ./totuModel
-        name: ''
+        name: Install npm dependencies
         shell-script: |-
           npm ci
           npm install -D ts-proto
@@ -20,7 +20,7 @@ jobs:
         shell-script: |-
           apt-get update
           apt-get install protobuf-compiler -y
-          npm run build
+          npm run build-model
         docker-image: node:lts
         name: Build npm package
     runs-on: Linux-Small
@@ -55,25 +55,22 @@ jobs:
   PublishNPM:
     name: Publish NPM model package
     runs-on: Linux-Small
-    steps:
-      - type: node-js
-        shell-script: |-
-          export GITHUB_TOKEN=%GITHUB_TOKEN%
-          cd totuModel
-          npm ci
-          cd ..
-          export GIT_DIR=../.git
-          export GIT_WORK_TREE=..
-          npm run release
-        docker-image: node:lts
-        working-directory: ''
-        name: Publish NPM model package
     dependencies:
       - BuildModel:
           files:
             - ./totuModel/build/libs/*.jar
             - ./totuModel/*.tgz
             - ./totuModel/dist/**
+    steps:
+      - type: node-js
+        shell-script: |-
+          export GITHUB_TOKEN=%GITHUB_TOKEN%
+          npm ci
+          npm run release-model
+        docker-image: node:lts
+        working-directory: ''
+        name: Publish NPM model package
+    enable-dependency-cache: true
     files-publication:
       - ./totuModel/*.tgz
       - ./totuModel/dist/**

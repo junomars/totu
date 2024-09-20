@@ -1,0 +1,17 @@
+{
+  "name": "totu",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build-model": "npm --prefix ./totuModel run build",
+    "release-model": "semantic-release --branches main",
+    "publish-model": "npm --prefix ./totuModel run publish:package"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "semantic-release": "^24.1.1"
+  }
+}
