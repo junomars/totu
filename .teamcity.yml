@@ -27,28 +27,55 @@ jobs:
     parallelism: 5
     enable-dependency-cache: true
     files-publication:
-      - ''
-  PublishModel:
-    name: Publish model
-    runs-on: Linux-Medium
+      - ./totuModel/build/libs/*.jar
+      - ./totuModel/*.tgz
+      - ./totuModel/dist/**
+  PublishGradle:
+    name: Publish Gradle model package
+    runs-on: Linux-Small
     dependencies:
       - BuildModel:
           files:
-            - ''
+            - ./totuModel/build/libs/*.jar
+            - ./totuModel/*.tgz
+            - ./totuModel/dist/**
     steps:
       - type: script
-        working-directory: ./totuModel
-        name: Publish Gradle model package
+        working-directory: ''
+        name: Set environment vars
         script-content: |-
-          export gpr.user=%USERNAME%;
-          export gpr.token=%GITHUB_PUBLISH_PKG_TOKEN%
-          ./gradlew publish
+          export USERNAME=%USERNAME%;
+          export GITHUB_TOKEN=%GITHUB_TOKEN%
+      - type: gradle
+        working-directory: ''
+        use-gradle-wrapper: 'true'
+        tasks: ':totuModel:publish'
+        jdk-home: '%env.JDK_21_0_x64%'
+        name: Publish Gradle model package
+    enable-dependency-cache: true
+    files-publication:
+      - ./totuModel/build/libs/*.jar
+    parallelism: 5
+  PublishNPM:
+    name: Publish NPM model package
+    runs-on: Linux-Small
+    steps:
       - type: node-js
-        shell-script: npm run release --access=private
+        shell-script: |-
+          npm ci
+          npm run release
         docker-image: node:lts
         working-directory: ./totuModel
         name: Publish NPM model package
-    enable-dependency-cache: true
+    dependencies:
+      - BuildModel:
+          files:
+            - ./totuModel/build/libs/*.jar
+            - ./totuModel/*.tgz
+            - ./totuModel/dist/**
+    files-publication:
+      - ./totuModel/*.tgz
+      - ./totuModel/dist/**
 secrets:
   GITHUB_TOKEN: credentialsJSON:ece132ad-c40d-4fd9-af78-c4e4b02e0042
 parameters:
