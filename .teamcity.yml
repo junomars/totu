@@ -40,12 +40,13 @@ jobs:
             - ./totuModel/*.tgz
             - ./totuModel/dist/**
     steps:
-      - type: gradle
+      - type: script
         working-directory: ''
-        use-gradle-wrapper: 'true'
-        tasks: ':totuModel:publish -Pgpr.user=%USERNAME% -Pgpr.token=%GITHUB_TOKEN%'
-        jdk-home: '%env.JDK_21_0_x64%'
-        name: Publish Gradle model package
+        name: Set environment vars and publish
+        script-content: |-
+          export USERNAME=%USERNAME%
+          export GITHUB_TOKEN=%GITHUB_TOKEN%
+          ./gradlew :totuModel:publish -Pgpr.user=%USERNAME% -Pgpr.token=%GITHUB_TOKEN%
     enable-dependency-cache: true
     files-publication:
       - ./totuModel/build/libs/*.jar
