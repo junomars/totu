@@ -16,7 +16,7 @@ jobs:
         tasks: ':totuModel:build'
         jdk-home: '%env.JDK_21_0_x64%'
       - type: node-js
-        working-directory: ./totuModel
+        working-directory: ''
         shell-script: |-
           apt-get update
           apt-get install protobuf-compiler -y
