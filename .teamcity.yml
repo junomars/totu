@@ -44,8 +44,8 @@ jobs:
         working-directory: ''
         name: Set environment vars and publish
         script-content: |-
-          export USERNAME=%USERNAME%
-          export GITHUB_TOKEN=%GITHUB_TOKEN%
+          export GIT_USERNAME=%USERNAME%
+          export GIT_PASSWORD=%GITHUB_TOKEN%
           ./gradlew :totuModel:release
           ./gradlew :totuModel:publish
     enable-dependency-cache: true

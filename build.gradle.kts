@@ -11,6 +11,10 @@ scmVersion {
     tag {
         prefix = "totu"
     }
+    repository {
+        customUsername = System.getenv("GIT_USERNAME")
+        customPassword = System.getenv("GIT_PASSWORD")
+    }
 }
 
 repositories {

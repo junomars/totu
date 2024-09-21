@@ -1,5 +1,3 @@
-import java.util.*
-
 plugins {
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.serialization") version "1.9.22"
@@ -31,6 +29,10 @@ dependencies {
 scmVersion {
     tag {
         prefix = "totu-model"
+    }
+    repository {
+        customUsername = System.getenv("GIT_USERNAME")
+        customPassword = System.getenv("GIT_PASSWORD")
     }
 }
 
