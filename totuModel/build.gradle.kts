@@ -5,6 +5,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.22"
     id("com.google.protobuf") version "0.9.4"
     `maven-publish`
+    id("pl.allegro.tech.build.axion-release")
 }
 
 group = "space.junodev"
@@ -25,6 +26,12 @@ dependencies {
     implementation("com.google.protobuf:protobuf-kotlin:$protobufVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-protobuf:$serializationVersion")
+}
+
+scmVersion {
+    tag {
+        prefix = "totu-model"
+    }
 }
 
 protobuf {
@@ -74,7 +81,7 @@ publishing {
             from(components["java"])
             groupId = "space.junodev"
             artifactId = "totu-model"
-            version = "0.1.0"
+            version = scmVersion.version
         }
     }
     repositories {

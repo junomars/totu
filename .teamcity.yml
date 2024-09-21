@@ -64,7 +64,9 @@ jobs:
     steps:
       - type: node-js
         shell-script: |-
+          # Exports refer: https://github.com/semantic-release/semantic-release/blob/master/docs/usage/ci-configuration.md
           export GITHUB_TOKEN=%GITHUB_TOKEN%
+          export GH_TOKEN=%GITHUB_TOKEN%
           npm ci
           npm run release-model
         docker-image: node:lts

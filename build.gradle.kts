@@ -7,6 +7,12 @@ plugins {
 group = "space.junodev"
 version = scmVersion.version
 
+scmVersion {
+    tag {
+        prefix = "totu"
+    }
+}
+
 repositories {
     mavenCentral()
 }
