@@ -4,8 +4,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run proto && tsc",
-    "proto": "mkdir -p src/generated && protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=src/generated --proto_path=./src/main/proto ./src/main/proto/**/*.proto",
-    "publish:package": "npm publish --access=private"
+    "proto": "mkdir -p src/generated && protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=src/generated --proto_path=./src/main/proto ./src/main/proto/**/*.proto"
   },
   "devDependencies": {
     "ts-proto": "^2.0.2",
