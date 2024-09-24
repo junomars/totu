@@ -6,10 +6,11 @@
     "release-model": "PKG_ROOT=totuModel semantic-release --extends ./release.config.js"
   },
   "devDependencies": {
-    "typescript": "^5.6.2",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^12.0.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "semantic-release": "^24.1.1"
+    "semantic-release": "^24.1.1",
+    "semantic-release-monorepo": "^8.0.2",
+    "typescript": "^5.6.2"
   }
 }
