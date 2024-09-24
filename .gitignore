@@ -455,3 +455,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,java,git,redis,gradle,jetbrains,jetbrains+all,jetbrains+iml,node
+
+# Removing generated folders from protobuf compilation
+totuModel/src/generated/
