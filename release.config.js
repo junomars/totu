@@ -16,21 +16,14 @@ module.exports = {
     monorepo: {
         analyzeCommits: [
             {
-                path: 'model',
+                path: 'totuModel',
                 releaseRules: [
                     { type: 'feat', release: 'minor' },
                     { type: 'fix', release: 'patch' }
                 ]
             },
             {
-                path: 'client',
-                releaseRules: [
-                    { type: 'feat', release: 'minor' },
-                    { type: 'fix', release: 'patch' }
-                ]
-            },
-            {
-                path: 'server',
+                path: 'totuClient',
                 releaseRules: [
                     { type: 'feat', release: 'minor' },
                     { type: 'fix', release: 'patch' }
