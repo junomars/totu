@@ -1,4 +1,4 @@
-name: tyrants2
+name: tyrants
 jobs:
   BuildModel:
     name: Build model
@@ -30,7 +30,8 @@ jobs:
       - ./totuModel/build/libs/*.jar
       - ./totuModel/*.tgz
       - ./totuModel/dist/**
-      - totuModel.releaserc
+    checkout-working-directories-only: false
+    allow-reuse: false
   PublishGradle:
     name: Publish Gradle model package
     runs-on: Linux-Small
@@ -40,20 +41,20 @@ jobs:
             - ./totuModel/build/libs/*.jar
             - ./totuModel/*.tgz
             - ./totuModel/dist/**
-            - totuModel.releaserc
     steps:
       - type: script
         working-directory: ''
         name: Set environment vars and publish
-        script-content: |-
+        script-content: >-
           export GIT_USERNAME=%USERNAME%
           export GIT_PASSWORD=%GITHUB_TOKEN%
-          ./gradlew :totuModel:release
-          ./gradlew :totuModel:publish
+          ./gradlew :totuModel:release -PGIT_USERNAME=%USERNAME% -PGIT_PASSWORD=%GITHUB_TOKEN%
+          ./gradlew :totuModel:publish -PGIT_USERNAME=%USERNAME% -PGIT_PASSWORD=%GITHUB_TOKEN%
     enable-dependency-cache: true
     files-publication:
       - ./totuModel/build/libs/*.jar
     checkout-working-directories-only: false
+    allow-reuse: false
   PublishNPM:
     name: Publish NPM model package
     runs-on: Linux-Small
@@ -63,19 +64,16 @@ jobs:
             - ./totuModel/build/libs/*.jar
             - ./totuModel/*.tgz
             - ./totuModel/dist/**
-            - totuModel.releaserc
+            - ./totuModel.releaserc
     steps:
       - type: node-js
         shell-script: >-
-          # Exports refer:
-          https://github.com/semantic-release/semantic-release/blob/master/docs/usage/ci-configuration.md
-
+          # Exports refer: https://github.com/semantic-release/semantic-release/blob/master/docs/usage/ci-configuration.md
           export GITHUB_TOKEN=%GITHUB_TOKEN%
-
           export GH_TOKEN=%GITHUB_TOKEN%
+          export NPM_TOKEN=%GITHUB_TOKEN%
 
           npm ci
-
           npm run release-model
         docker-image: node:lts
         working-directory: ''
@@ -84,8 +82,8 @@ jobs:
     files-publication:
       - ./totuModel/*.tgz
       - ./totuModel/dist/**
-      - totuModel.releaserc
     checkout-working-directories-only: false
+    allow-reuse: false
 secrets:
   GITHUB_TOKEN: credentialsJSON:74211c03-3550-4c65-9eb3-b262fd2f893d
 parameters:
