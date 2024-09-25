@@ -48,8 +48,15 @@ jobs:
         script-content: >-
           export GIT_USERNAME=%USERNAME%
           export GIT_PASSWORD=%GITHUB_TOKEN%
-          ./gradlew :totuModel:release -PGIT_USERNAME=%USERNAME% -PGIT_PASSWORD=%GITHUB_TOKEN%
-          ./gradlew :totuModel:publish -PGIT_USERNAME=%USERNAME% -PGIT_PASSWORD=%GITHUB_TOKEN%
+          ./gradlew verifyRelease -PGIT_USERNAME=%USERNAME% -PGIT_PASSWORD=%GITHUB_TOKEN%
+
+          if [ $? -eq 0 ]; then
+              ./gradlew versionBump -PGIT_USERNAME=%USERNAME% -PGIT_PASSWORD=%GITHUB_TOKEN%
+              ./gradlew :totuModel:release -PGIT_USERNAME=%USERNAME% -PGIT_PASSWORD=%GITHUB_TOKEN%
+              ./gradlew :totuModel:publish -PGIT_USERNAME=%USERNAME% -PGIT_PASSWORD=%GITHUB_TOKEN%
+          else
+              echo "No release needed"
+          fi
     enable-dependency-cache: true
     files-publication:
       - ./totuModel/build/libs/*.jar
@@ -64,7 +71,6 @@ jobs:
             - ./totuModel/build/libs/*.jar
             - ./totuModel/*.tgz
             - ./totuModel/dist/**
-            - ./totuModel.releaserc
     steps:
       - type: node-js
         shell-script: >-

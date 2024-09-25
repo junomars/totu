@@ -28,3 +28,7 @@ subprojects {
 
     apply(plugin = "org.jetbrains.kotlin.jvm")
 }
+
+tasks.register<Exec>("versionBump") {
+    commandLine("bash", "./scripts/version-bump.sh")
+}

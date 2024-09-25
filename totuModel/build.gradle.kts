@@ -7,6 +7,7 @@ plugins {
 }
 
 group = "space.junodev"
+version = scmVersion.version
 
 repositories {
     mavenCentral()
