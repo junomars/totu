@@ -13,22 +13,4 @@ module.exports = {
             }
         ]
     ],
-    monorepo: {
-        analyzeCommits: [
-            {
-                path: 'totuModel',
-                releaseRules: [
-                    { type: 'feat', release: 'minor' },
-                    { type: 'fix', release: 'patch' }
-                ]
-            },
-            {
-                path: 'totuClient',
-                releaseRules: [
-                    { type: 'feat', release: 'minor' },
-                    { type: 'fix', release: 'patch' }
-                ]
-            }
-        ]
-    }
 };
